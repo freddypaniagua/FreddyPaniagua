@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const repo = "John-Doe-Portfolio";
+const repo = "FreddyPaniagua";
 const isGithubPages =
   process.env.GITHUB_PAGES === "true" || process.env.GITHUB_ACTIONS === "true";
 
