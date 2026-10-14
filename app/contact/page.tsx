@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ContactForm from "@/components/ContactForm";
+import ContactLinks from "@/components/ContactLinks";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -8,33 +8,18 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-      <header className="space-y-4">
-        <h1 className="text-4xl font-semibold tracking-tight text-white">
-          Contact
-        </h1>
-        <p className="text-lg leading-8 text-zinc-400">
-          These details are fictional. Use the form to see client-side
-          validation in this demo.
-        </p>
-        <ul className="space-y-2 text-zinc-300">
-          <li>{site.email}</li>
-          <li>{site.location}</li>
-          {site.socials
-            .filter((item) => item.href.startsWith("http"))
-            .map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className="text-teal underline-offset-4 hover:underline"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-        </ul>
-      </header>
-      <ContactForm />
-    </div>
+    <header className="max-w-2xl">
+      <h1 className="font-serif text-4xl sm:text-5xl">Contact</h1>
+      <p className="mt-4 leading-7 text-muted">
+        Email is the best way to reach me. GitHub and LinkedIn are here too.
+      </p>
+      <p className="mt-8 font-serif text-2xl sm:text-3xl">
+        <a className="quiet-link" href={`mailto:${site.email}`}>
+          {site.email}
+        </a>
+      </p>
+      <ContactLinks className="mt-8" />
+      <p className="mt-8 text-sm text-muted">{site.location}</p>
+    </header>
   );
 }

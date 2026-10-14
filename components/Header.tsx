@@ -5,37 +5,38 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { nav, site } from "@/lib/content";
 
+function isActive(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-ink/80 backdrop-blur-md print:hidden">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-teal/15 font-semibold text-teal">
-            JD
-          </span>
-          <span className="hidden text-sm font-medium text-zinc-100 sm:block">
-            {site.name}
-          </span>
+    <header className="border-b border-line print:hidden">
+      <div className="mx-auto flex max-w-3xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
+        <Link
+          href="/"
+          className="font-serif text-lg text-ink"
+          onClick={() => setOpen(false)}
+        >
+          {site.name}
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav className="hidden items-center gap-6 text-sm sm:flex">
           {nav.map((item) => {
-            const active =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(item.href);
+            const active = isActive(pathname, item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-full px-3 py-1.5 text-sm transition ${
+                aria-current={active ? "page" : undefined}
+                className={
                   active
-                    ? "bg-white/10 text-white"
-                    : "text-zinc-400 hover:bg-white/5 hover:text-zinc-100"
-                }`}
+                    ? "text-ink underline decoration-mark decoration-2 underline-offset-8"
+                    : "text-muted hover:text-ink"
+                }
               >
                 {item.label}
               </Link>
@@ -45,29 +46,33 @@ export default function Header() {
 
         <button
           type="button"
-          className="rounded-md border border-white/10 px-3 py-1.5 text-sm text-zinc-200 md:hidden"
+          className="text-sm text-ink sm:hidden"
           aria-expanded={open}
-          aria-label="Toggle navigation"
+          aria-controls="site-menu"
           onClick={() => setOpen((value) => !value)}
         >
-          Menu
+          {open ? "Close" : "Menu"}
         </button>
       </div>
 
       {open ? (
-        <nav className="border-t border-white/10 px-4 py-3 md:hidden">
-          <ul className="flex flex-col gap-1">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="block rounded-md px-3 py-2 text-sm text-zinc-200 hover:bg-white/5"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+        <nav id="site-menu" className="border-t border-line px-5 py-2 sm:hidden">
+          <ul>
+            {nav.map((item) => {
+              const active = isActive(pathname, item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    className="block py-2 text-ink"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       ) : null}

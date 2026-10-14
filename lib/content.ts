@@ -1,98 +1,90 @@
 export const site = {
-  name: "John Doe",
-  title: "Senior Full-Stack Engineer",
-  location: "Seattle, WA",
-  email: "hello@johndoe.dev",
-  tagline:
-    "I design and ship reliable product surfaces — from data-heavy dashboards to collaborative tools people actually enjoy using.",
-  demoNotice:
-    "Sample portfolio generated for an AI course — all details are fictional.",
+  name: "Freddy Paniagua",
+  title: "Aspiring software engineer",
+  location: "Santa Monica, California",
+  email: "freddyrp06@gmail.com",
+  summary:
+    "Hi, I'm Freddy. I'm an aspiring software engineer studying computer science and linguistics at UCLA. I compare different AI systems on real tasks to see where each one is reliable and where it falls short.",
   socials: [
-    { label: "GitHub", href: "https://github.com/johndoe" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/johndoe" },
-    { label: "Resume", href: "/resume" },
+    { label: "Email", href: "mailto:freddyrp06@gmail.com" },
+    { label: "GitHub", href: "https://github.com/freddypaniagua" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/freddyrp" },
   ],
 } as const;
 
 export const nav = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
+  { href: "/about", label: "About" },
   { href: "/resume", label: "Resume" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
 export const skills = [
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Node.js",
-  "PostgreSQL",
+  "C++",
   "Python",
-  "AWS",
-  "Observability",
-  "Product design",
-  "Technical writing",
+  "Java",
+  "TypeScript",
+  "Qt",
+  "Active Directory",
+  "Intune",
+  "ServiceNow",
 ];
 
-export const interests = [
-  "Transit systems and maps",
-  "Amateur radio and weekend hiking",
-  "Teaching junior engineers how to debug in public",
+export const languages = "English (native) · Spanish (fluent)";
+
+export const about = [
+  "Hi, I'm Freddy. I'm an aspiring software engineer studying computer science and linguistics at UCLA. I'm interested in how different AI systems approach the same problem, and I test them on real tasks to see where their reasoning holds and where it breaks down.",
+  "I work part time for the City of Santa Monica. I started as a client services intern in 2024 and was hired as an administrative intern in January 2025, with more hours and a wider set of responsibilities. I now provide information technology support at City Hall and across the Santa Monica Public Library, for a city workforce of about 2,300.",
 ];
-
-export const bio = `John Doe is a senior full-stack engineer based in Seattle. He has spent the last decade helping product teams turn messy operational data into tools that feel calm, fast, and trustworthy.
-
-This site is a fictional example. The companies, projects, dates, and contact details below are invented for an AI course demonstration of what a generated portfolio can look like.`;
 
 export type Role = {
   company: string;
   title: string;
   dates: string;
   location: string;
+  summary: string;
   bullets: string[];
 };
 
 export const experience: Role[] = [
   {
-    company: "Northwind Labs",
-    title: "Senior Full-Stack Engineer",
-    dates: "2022 — Present",
-    location: "Seattle, WA",
+    company: "City of Santa Monica",
+    title: "Administrative Intern",
+    dates: "January 2025 — Present",
+    location: "Santa Monica, California",
+    summary:
+      "Information technology support at City Hall and the Santa Monica Public Library, for a city workforce of about 2,300.",
     bullets: [
-      "Led the Lumen observability platform used by 40+ internal teams to trace production incidents.",
-      "Cut median time-to-detect from 18 minutes to under 4 by pairing structured logs with a shared incident timeline.",
-      "Mentored a pod of four engineers and introduced design reviews that halved rework on customer-facing surfaces.",
+      "Support departments at City Hall and every branch of the Santa Monica Public Library.",
+      "Keep Active Directory records up to date.",
+      "Diagnose and fix hardware problems.",
+      "Maintain Crestron systems and update their firmware.",
     ],
   },
   {
-    company: "Cascade Analytics",
-    title: "Full-Stack Engineer",
-    dates: "2019 — 2022",
-    location: "Portland, OR",
+    company: "City of Santa Monica",
+    title: "Client Services Intern",
+    dates: "June 2024 — November 2024",
+    location: "Santa Monica, California",
+    summary: "Technical support for city staff across multiple sites.",
     bullets: [
-      "Built self-serve reporting so analysts could ship weekly dashboards without waiting on engineering.",
-      "Migrated a legacy Python monolith to a typed Node/React stack while keeping weekly releases green.",
-      "Partnered with data science on model-eval tooling used across three product lines.",
-    ],
-  },
-  {
-    company: "Harbor Apps",
-    title: "Software Engineer",
-    dates: "2016 — 2019",
-    location: "Seattle, WA",
-    bullets: [
-      "Shipped mobile-web features for a regional transit companion used by 200k monthly riders.",
-      "Owned on-call for the maps service and reduced p95 tile latency by 35%.",
+      "Repaired desktops and laptops during the 2024 CrowdStrike outage, including machines at the Santa Monica Police Station.",
+      "Diagnosed hardware and software problems so staff could get back to work.",
+      "Coordinated equipment pickup and delivery, and gave support at multiple city locations.",
     ],
   },
 ];
 
 export const education = [
   {
-    school: "University of Washington",
-    credential: "B.S. Computer Science",
-    dates: "2012 — 2016",
+    school: "University of California, Los Angeles",
+    credential: "Computer Science and Linguistics",
+    dates: "2026 — Present",
+  },
+  {
+    school: "Santa Monica College",
+    credential: "Computer Science",
+    dates: "2024 — 2026",
   },
 ];
 
@@ -100,84 +92,38 @@ export type Project = {
   slug: string;
   name: string;
   summary: string;
-  outcome: string;
+  body: string;
+  bullets: string[];
   stack: string[];
-  accent: string;
-  featured?: boolean;
   github: string;
-  live: string;
 };
 
 export const projects: Project[] = [
   {
-    slug: "lumen",
-    name: "Lumen",
+    slug: "cscan",
+    name: "CSCAN",
     summary:
-      "An incident-first observability dashboard that stitches traces, logs, and deploys into one timeline.",
-    outcome: "Median time-to-detect dropped from 18 minutes to under 4.",
-    stack: ["TypeScript", "Next.js", "ClickHouse", "OpenTelemetry"],
-    accent: "#14b8a6",
-    featured: true,
-    github: "https://github.com/johndoe/lumen",
-    live: "https://lumen.johndoe.dev",
+      "A Windows desktop app that watches a Counter-Strike 2 match, reads the HUD with OCR, and recommends what to buy that round.",
+    body: "Screen capture, the economy engine, and Tesseract all run. The HUD regions are still hand-calibrated pixel rectangles, so matching them across resolutions is the current work. Without Tesseract installed, the app falls back to a mock OCR mode so the rest of the pipeline can be tested.",
+    bullets: [
+      "Built a C++ and Qt 6 desktop app that captures the screen, reads money, score, and the buy timer with Tesseract, and recommends a full buy, force, eco, or save.",
+      "Side comes from the shape of the CT/T emblem, so a recolored HUD still works, and spectator detection keeps the reading off a teammate's money after you die.",
+      "The app reads pixels on screen and leaves game memory alone.",
+    ],
+    stack: ["C++17", "Qt 6", "Tesseract", "CMake"],
+    github: "https://github.com/freddypaniagua/cscan",
   },
   {
-    slug: "nimbus-notes",
-    name: "Nimbus Notes",
+    slug: "tipping-point",
+    name: "Tipping Point",
     summary:
-      "A collaborative editor with presence, comments, and offline-first sync for distributed product teams.",
-    outcome: "Adopted by 12 squads; 92% of weekly notes now live in-product.",
-    stack: ["React", "Yjs", "PostgreSQL", "WebSockets"],
-    accent: "#38bdf8",
-    featured: true,
-    github: "https://github.com/johndoe/nimbus-notes",
-    live: "https://nimbus.johndoe.dev",
-  },
-  {
-    slug: "harbor-maps",
-    name: "Harbor Maps",
-    summary:
-      "A transit visualization that overlays live vehicle positions on accessible, print-friendly route maps.",
-    outcome: "Helped riders recover 11 minutes on average during service disruptions.",
-    stack: ["MapLibre", "Python", "Redis", "TypeScript"],
-    accent: "#f59e0b",
-    featured: true,
-    github: "https://github.com/johndoe/harbor-maps",
-    live: "https://maps.harborapps.dev",
-  },
-  {
-    slug: "kiln",
-    name: "Kiln",
-    summary:
-      "A design-token studio that generates theme packages for web and native from a single source of truth.",
-    outcome: "Replaced four ad-hoc style sheets with one published token pipeline.",
-    stack: ["TypeScript", "Figma API", "Node"],
-    accent: "#a78bfa",
-    github: "https://github.com/johndoe/kiln",
-    live: "https://kiln.johndoe.dev",
-  },
-  {
-    slug: "ledgerlight",
-    name: "Ledgerlight",
-    summary:
-      "Internal billing explorer that makes invoice anomalies visible before they reach finance.",
-    outcome: "Caught $240k in mis-attributed charges in the first two quarters.",
-    stack: ["Next.js", "Postgres", "dbt"],
-    accent: "#fb7185",
-    github: "https://github.com/johndoe/ledgerlight",
-    live: "https://ledgerlight.johndoe.dev",
-  },
-  {
-    slug: "quiet-queue",
-    name: "Quiet Queue",
-    summary:
-      "A humane on-call rotation tool with quiet hours, handoff notes, and paging that respects time zones.",
-    outcome: "Pages outside agreed hours fell by 61% without missing SLAs.",
-    stack: ["Go", "React", "PagerDuty API"],
-    accent: "#34d399",
-    github: "https://github.com/johndoe/quiet-queue",
-    live: "https://quietqueue.johndoe.dev",
+      "A daily browser game: five weigh-ins, and for each one you guess how many of one object it takes to balance another.",
+    body: "Everyone gets the same five pairs that day, and each guess is one shot. An SVG scale piles your objects onto the pan, swings, and settles before the real count and a one-line fact appear. A stepper jumps through magnitudes (1, 2, 5, 10, 20…) and you can also type an exact number. Points come from how far the guess is as a ratio, so being twice off counts the same on fifty whales as on five million ants.",
+    bullets: [
+      "Built a TypeScript and Vite game where a day's puzzle is five weigh-ins, scored only after an SVG scale has settled on your guess.",
+      "Scoring uses the log of guess over answer, with Vitest covering the tilt bands, so large and small objects are judged on the same scale.",
+    ],
+    stack: ["TypeScript", "Vite", "Vitest"],
+    github: "https://github.com/freddypaniagua/tipping-point-game",
   },
 ];
-
-export const featuredProjects = projects.filter((project) => project.featured);

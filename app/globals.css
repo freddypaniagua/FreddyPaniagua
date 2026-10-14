@@ -1,40 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #f4f4f5;
-  --ink: #09090b;
-  --teal: #14b8a6;
+  --paper: #fbfbf9;
+  --ink: #1a1a1a;
+  --muted: #5a5a5a;
+  --line: #e4e4e4;
+  --mark: #8c2f2a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-paper: var(--paper);
   --color-ink: var(--ink);
-  --color-teal: var(--teal);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-mark: var(--mark);
+  --font-sans: var(--font-source-sans), "Source Sans 3", "Segoe UI", sans-serif;
+  --font-serif: var(--font-literata), "Iowan Old Style", Palatino, Georgia, serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #f3ddd9;
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.quiet-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #b5b5b5;
+  text-underline-offset: 0.18em;
+}
+
+.quiet-link:hover {
+  text-decoration-color: var(--mark);
 }
 
 @media print {
-  :root {
-    --background: #ffffff;
-    --foreground: #18181b;
-  }
-
   body {
     background: white;
-    color: #18181b;
   }
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 }

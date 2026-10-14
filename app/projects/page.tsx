@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectList from "@/components/ProjectList";
 import { projects } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -8,20 +8,17 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="space-y-8">
-      <header className="max-w-2xl space-y-3">
-        <h1 className="text-4xl font-semibold tracking-tight text-white">
-          Projects
-        </h1>
-        <p className="text-lg text-zinc-400">
-          Sample product work invented for this demo: dashboards, collaboration,
-          and maps.
+    <div>
+      <header className="max-w-2xl">
+        <h1 className="font-serif text-4xl sm:text-5xl">Projects</h1>
+        <p className="mt-4 leading-7 text-muted">
+          Two builds. CSCAN reads a live game screen and suggests a buy.
+          Tipping Point asks you to estimate the weight of one real thing
+          against another.
         </p>
       </header>
-      <div className="grid gap-5 md:grid-cols-2">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+      <div className="mt-10">
+        <ProjectList projects={projects} detailed />
       </div>
     </div>
   );

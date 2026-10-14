@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { bio, experience, interests } from "@/lib/content";
+import { about, education, experience, site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About",
@@ -7,38 +7,55 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-14">
       <header className="max-w-2xl space-y-4">
-        <h1 className="text-4xl font-semibold tracking-tight text-white">About</h1>
-        <p className="text-lg leading-8 text-zinc-400 whitespace-pre-line">{bio}</p>
+        <h1 className="font-serif text-4xl sm:text-5xl">About</h1>
+        {about.map((paragraph) => (
+          <p key={paragraph} className="leading-7 text-muted">
+            {paragraph}
+          </p>
+        ))}
       </header>
 
-      <section className="space-y-6">
-        <h2 className="text-2xl font-semibold text-white">Timeline</h2>
-        <ol className="space-y-6 border-l border-white/10 pl-6">
-          {experience.map((role) => (
-            <li key={role.company} className="space-y-1">
-              <p className="text-sm text-teal">{role.dates}</p>
-              <h3 className="text-lg font-medium text-white">
-                {role.title} · {role.company}
-              </h3>
-              <p className="text-sm text-zinc-500">{role.location}</p>
-              <p className="max-w-2xl text-sm leading-6 text-zinc-400">
-                {role.bullets[0]}
-              </p>
-            </li>
+      <section>
+        <h2 className="font-serif text-3xl">Background</h2>
+        <div className="mt-6 border-t border-line">
+          <p className="border-b border-line py-3 text-sm text-muted">School</p>
+          {education.map((item) => (
+            <article
+              key={item.school}
+              className="grid gap-1 border-b border-line py-5 sm:grid-cols-[1fr_auto] sm:gap-8"
+            >
+              <div>
+                <h3>{item.school}</h3>
+                <p className="text-muted">{item.credential}</p>
+              </div>
+              <p className="text-sm text-muted sm:text-right">{item.dates}</p>
+            </article>
           ))}
-        </ol>
+          <p className="border-b border-line py-3 text-sm text-muted">Work</p>
+          {experience.map((role) => (
+            <article key={role.title} className="border-b border-line py-5">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+                <div>
+                  <h3>{role.title}</h3>
+                  <p className="text-muted">
+                    {role.company} · {role.location}
+                  </p>
+                </div>
+                <p className="text-sm text-muted sm:text-right">{role.dates}</p>
+              </div>
+              <ul className="mt-3 max-w-2xl list-disc space-y-1 pl-5 text-sm leading-6 text-muted">
+                {role.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
       </section>
 
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold text-white">Outside of work</h2>
-        <ul className="list-disc space-y-2 pl-5 text-zinc-400">
-          {interests.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
+      <p className="text-sm text-muted">{site.location}</p>
     </div>
   );
 }

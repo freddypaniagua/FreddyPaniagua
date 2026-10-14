@@ -1,8 +1,6 @@
-# John Doe Portfolio
+# Freddy Paniagua
 
-Sample portfolio generated for an AI course — **all details are fictional**.
-
-Persona: John Doe, senior full-stack engineer in Seattle. Employers, projects, dates, and `hello@johndoe.dev` are invented examples.
+Personal site for a computer science student in Santa Monica looking for a software internship.
 
 ## Run locally
 
@@ -13,8 +11,4 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Pages: Home, About, Projects, Resume (print to PDF), Contact.
-
-## Collaborators
-
-- [adimitrov23](https://github.com/adimitrov23)
+Pages: Home, Projects, About, Resume (print to PDF), Contact.

@@ -1,71 +1,76 @@
 import Link from "next/link";
-import ProjectCard from "@/components/ProjectCard";
-import { featuredProjects, site, skills } from "@/lib/content";
+import ContactLinks from "@/components/ContactLinks";
+import ProjectList from "@/components/ProjectList";
+import { education, experience, projects, site, skills } from "@/lib/content";
 
 export default function Home() {
   return (
     <div className="space-y-16">
-      <section className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
-        <div className="space-y-6">
-          <p className="text-sm uppercase tracking-[0.2em] text-teal">
-            {site.location}
-          </p>
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            {site.name}
-          </h1>
-          <p className="text-xl text-zinc-300">{site.title}</p>
-          <p className="max-w-xl text-lg leading-8 text-zinc-400">{site.tagline}</p>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/projects"
-              className="rounded-full bg-teal px-5 py-2.5 text-sm font-medium text-ink hover:bg-teal/90"
-            >
-              View projects
-            </Link>
-            <Link
-              href="/resume"
-              className="rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-zinc-100 hover:bg-white/5"
-            >
-              Download resume
-            </Link>
-          </div>
-        </div>
-        <div
-          className="relative aspect-square max-h-80 overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_30%_20%,#14b8a655,transparent_45%),radial-gradient(circle_at_80%_80%,#38bdf855,transparent_40%)]"
-          aria-hidden
-        >
-          <div className="absolute inset-0 grid place-items-center text-6xl font-semibold text-white/80">
-            JD
-          </div>
-        </div>
-      </section>
+      <header className="max-w-2xl">
+        <h1 className="font-serif text-5xl leading-[1.05] sm:text-6xl">
+          {site.name}
+        </h1>
+        <span className="mt-6 block h-0.5 w-12 bg-mark" aria-hidden />
+        <p className="mt-6 text-xl leading-8">{site.summary}</p>
+        <ContactLinks className="mt-8" />
+      </header>
 
-      <section className="space-y-6">
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="text-2xl font-semibold text-white">Featured work</h2>
-          <Link href="/projects" className="text-sm text-teal hover:underline">
-            All projects
-          </Link>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold text-white">Skills</h2>
-        <ul className="flex flex-wrap gap-2">
+      <section>
+        <h2 className="font-serif text-3xl">Skills</h2>
+        <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-lg">
           {skills.map((skill) => (
-            <li
-              key={skill}
-              className="rounded-full border border-white/10 px-3 py-1.5 text-sm text-zinc-300"
-            >
-              {skill}
-            </li>
+            <li key={skill}>{skill}</li>
           ))}
         </ul>
+      </section>
+
+      <section>
+        <h2 className="mb-2 font-serif text-3xl">Projects</h2>
+        <ProjectList projects={projects} />
+      </section>
+
+      <section className="border-t border-line pt-10">
+        <h2 className="font-serif text-3xl">Background</h2>
+        <div className="mt-6 border-t border-line">
+          <p className="border-b border-line py-3 text-sm text-muted">School</p>
+          {education.map((item) => (
+            <article
+              key={item.school}
+              className="grid gap-1 border-b border-line py-5 sm:grid-cols-[1fr_auto] sm:gap-8"
+            >
+              <div>
+                <h3>{item.credential}</h3>
+                <p className="text-muted">{item.school}</p>
+              </div>
+              <p className="text-sm text-muted sm:text-right">{item.dates}</p>
+            </article>
+          ))}
+          <p className="border-b border-line py-3 text-sm text-muted">Work</p>
+          {experience.map((role) => (
+            <article
+              key={role.title}
+              className="grid gap-1 border-b border-line py-5 sm:grid-cols-[1fr_auto] sm:gap-8"
+            >
+              <div>
+                <h3>{role.title}</h3>
+                <p className="text-muted">{role.company}</p>
+                <p className="mt-1 max-w-xl text-sm leading-6 text-muted">
+                  {role.summary}
+                </p>
+              </div>
+              <p className="text-sm text-muted sm:text-right">{role.dates}</p>
+            </article>
+          ))}
+        </div>
+        <p className="mt-6 text-sm">
+          <Link className="quiet-link" href="/about">
+            About
+          </Link>
+          <span className="text-muted"> · </span>
+          <Link className="quiet-link" href="/resume">
+            Resume
+          </Link>
+        </p>
       </section>
     </div>
   );

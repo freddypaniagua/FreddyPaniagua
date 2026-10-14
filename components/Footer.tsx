@@ -1,13 +1,14 @@
 import { site } from "@/lib/content";
+import ContactLinks from "@/components/ContactLinks";
 
 export default function Footer() {
   return (
-    <footer className="mt-auto border-t border-white/10 print:hidden">
-      <div className="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-8 text-sm text-zinc-500 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+    <footer className="mt-auto border-t border-line print:hidden">
+      <div className="mx-auto flex max-w-3xl flex-col gap-4 px-5 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <p>
-          © 2026 {site.name}. Fictional portfolio for an AI course.
+          {site.name}, {site.location}
         </p>
-        <p>{site.email}</p>
+        <ContactLinks />
       </div>
     </footer>
   );
