@@ -7,7 +7,7 @@ Aspiring software engineer studying computer science at UCLA.
 ## What I'm building
 
 **[Tipping Point](https://freddypaniagua.github.io/tipping-point-game/)** · TypeScript, Vite<br>
-A daily browser estimation game. Guess how many of one object it takes to balance another on a tipping scale. [Play it →](https://freddypaniagua.github.io/tipping-point-game/)
+How many blue whales does it take to balance the Eiffel Tower? Every day brings 5 new weigh-ins and one shot at each. Pick your number, then watch the objects pile onto the scale as it swings, wobbles, and settles to show how close you got, followed by a wild fact. Everyone in the world gets the same puzzle each day. [Play today's puzzle →](https://freddypaniagua.github.io/tipping-point-game/)
 
 **CSCAN** · C++17, Qt6, Tesseract OCR<br>
 A Windows desktop app that reads the Counter-Strike 2 HUD with OCR during a match and recommends what to buy each round (full buy, force, eco, or save) based on money, side, and score. It started as a browser tool where players typed in their numbers, but that took up half the buy phase, so I rebuilt it to read the screen automatically. *In progress: tuning HUD detection across resolutions.*
