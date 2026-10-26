@@ -95,35 +95,54 @@ export type Project = {
   body: string;
   bullets: string[];
   stack: string[];
-  github: string;
+  status?: string;
+  link?: { href: string; label: string };
 };
 
 export const projects: Project[] = [
   {
+    slug: "tipping-point",
+    name: "Tipping Point",
+    summary:
+      "An estimation game that runs in the browser: guess how many of one object it takes to balance another on a scale, like blue whales against the Eiffel Tower. After you commit to a guess, an animated scale stacks up your objects and tips toward the heavier side, and your score is based on how many times too high or too low you were, so huge and tiny answers are judged fairly. It's designed as a daily game where every player gets the same 5 puzzles.",
+    body: "Each guess is one shot. An SVG scale piles your objects onto the pan, swings, and settles before the real count and a one-line fact appear. A stepper jumps through magnitudes (1, 2, 5, 10, 20…) and you can also type an exact number. Scoring uses the log of guess over answer, with Vitest tests covering the tilt bands.",
+    bullets: [
+      "Built a TypeScript and Vite game where a day's puzzle is five weigh-ins, scored only after an SVG scale has settled on your guess.",
+      "Scoring uses the log of guess over answer, with Vitest covering the tilt bands, so large and small objects are judged on the same scale.",
+    ],
+    stack: ["TypeScript", "Vite", "Vitest", "GitHub Pages"],
+    status: "In development: one puzzle set is playable now.",
+    link: {
+      href: "https://freddypaniagua.github.io/tipping-point-game/",
+      label: "Play",
+    },
+  },
+  {
     slug: "cscan",
     name: "CSCAN",
     summary:
-      "A Windows desktop app that watches a Counter-Strike 2 match, reads the HUD with OCR, and recommends what to buy that round.",
-    body: "Screen capture, the economy engine, and Tesseract all run. The HUD regions are still hand-calibrated pixel rectangles, so matching them across resolutions is the current work. Without Tesseract installed, the app falls back to a mock OCR mode so the rest of the pipeline can be tested.",
+      "A real-time economy advisor for Counter-Strike 2. It captures the screen with Qt, uses Tesseract OCR to read your money, side, and score off the game's display, and runs that through a C++ decision engine that recommends what to buy each round: full buy, force buy, eco, or save. It works only from what's on screen and never reads or changes the game's memory.",
+    body: "Side comes from the shape of the CT/T emblem, so a recolored HUD still works, and spectator detection keeps the reading off a teammate's money after you die. Without Tesseract installed, the app falls back to a mock OCR mode so the rest of the pipeline can be tested.",
     bullets: [
       "Built a C++ and Qt 6 desktop app that captures the screen, reads money, score, and the buy timer with Tesseract, and recommends a full buy, force, eco, or save.",
       "Side comes from the shape of the CT/T emblem, so a recolored HUD still works, and spectator detection keeps the reading off a teammate's money after you die.",
       "The app reads pixels on screen and leaves game memory alone.",
     ],
     stack: ["C++17", "Qt 6", "Tesseract", "CMake"],
-    github: "https://github.com/freddypaniagua/cscan",
+    status: "In progress: making screen reading work reliably at every resolution.",
   },
   {
-    slug: "tipping-point",
-    name: "Tipping Point",
+    slug: "drop-tones",
+    name: "Drop Tones",
     summary:
-      "A daily browser game: five weigh-ins, and for each one you guess how many of one object it takes to balance another.",
-    body: "Everyone gets the same five pairs that day, and each guess is one shot. An SVG scale piles your objects onto the pan, swings, and settles before the real count and a one-line fact appear. A stepper jumps through magnitudes (1, 2, 5, 10, 20…) and you can also type an exact number. Points come from how far the guess is as a ratio, so being twice off counts the same on fifty whales as on five million ants.",
+      "A browser-based DJ battle game where two players mix music live and compete head-to-head, or one player takes on a bot. Sounds are generated in code with the Web Audio API and kept in sync on a shared beat, key, and chord progression, so any combination sounds good together. I'm testing two ways to control the mix: dropping sounds onto characters that each play one part of the song, or a DJ mixer modeled on the real equipment DJs use.",
+    body: "Each theme is a single file that sets its sounds, tempo, and combos, so new sound packs need no new code. Node.js tools pull Creative Commons sound packs from Freesound to build new themes.",
     bullets: [
-      "Built a TypeScript and Vite game where a day's puzzle is five weigh-ins, scored only after an SVG scale has settled on your guess.",
-      "Scoring uses the log of guess over answer, with Vitest covering the tilt bands, so large and small objects are judged on the same scale.",
+      "Built a browser DJ battle game, playable against a bot or a friend on the same computer, with sounds synthesized in code using the Web Audio API.",
+      "Every sound shares one beat, key, and chord progression, so any combination of parts plays in sync and sounds good together.",
+      "Wrote Node.js tools that pull Creative Commons sound packs from Freesound and turn them into new themes without new code.",
     ],
-    stack: ["TypeScript", "Vite", "Vitest"],
-    github: "https://github.com/freddypaniagua/tipping-point-game",
+    stack: ["JavaScript", "Web Audio API", "Node.js"],
+    status: "Early development.",
   },
 ];

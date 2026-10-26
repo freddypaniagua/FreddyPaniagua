@@ -77,9 +77,11 @@ export default function ResumePage() {
                   {project.name}
                   <span className="text-muted"> — {project.stack.join(", ")}</span>
                 </h3>
-                <a className="quiet-link text-sm" href={project.github}>
-                  GitHub
-                </a>
+                {project.link ? (
+                  <a className="quiet-link text-sm" href={project.link.href}>
+                    {project.link.label}
+                  </a>
+                ) : null}
               </div>
               <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6 text-muted">
                 {project.bullets.map((bullet) => (

@@ -12,9 +12,8 @@ export default function ProjectsPage() {
       <header className="max-w-2xl">
         <h1 className="font-serif text-4xl sm:text-5xl">Projects</h1>
         <p className="mt-4 leading-7 text-muted">
-          Two builds. CSCAN reads a live game screen and suggests a buy.
-          Tipping Point asks you to estimate the weight of one real thing
-          against another.
+          What I&apos;m building right now: a daily estimation game, a
+          real-time advisor for Counter-Strike 2, and a DJ battle game.
         </p>
       </header>
       <div className="mt-10">

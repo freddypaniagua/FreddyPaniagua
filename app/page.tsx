@@ -25,7 +25,7 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="mb-2 font-serif text-3xl">Projects</h2>
+        <h2 className="mb-2 font-serif text-3xl">What I&apos;m building</h2>
         <ProjectList projects={projects} />
       </section>
 
