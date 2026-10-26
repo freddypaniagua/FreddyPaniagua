@@ -15,4 +15,3 @@ A Windows desktop app that reads the Counter-Strike 2 HUD with OCR during a matc
 **Drop Tones** · JavaScript, Web Audio<br>
 A music game anyone can play: drag sounds onto little creatures to build a song. Every sound fits with every other, so it always sounds good. It includes a DJ battle mode against a bot or a friend, and an ear-training game where you rebuild a mystery loop. *Early development.*
 
-*Source code for these projects is private while they're in development.*
