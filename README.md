@@ -13,5 +13,5 @@ A daily browser estimation game. Guess how many of one object it takes to balanc
 A Windows desktop app that reads the Counter-Strike 2 HUD with OCR during a match and recommends what to buy each round (full buy, force, eco, or save) based on money, side, and score. It started as a browser tool where players typed in their numbers, but that took up half the buy phase, so I rebuilt it to read the screen automatically. *In progress: tuning HUD detection across resolutions.*
 
 **Drop Tones** · JavaScript, Web Audio<br>
-A DJ battle game where you mix music live and go head-to-head against a bot or a friend while a crowd shouts requests and scores each set. I'm experimenting with two ways to play: "dropping tones" onto little characters that each carry a part of the song, or a DJ mixer like the ones real DJs use to mix tracks and battle each other. Every sound is built to fit together, so anyone can jump in and sound good. *Early development.*
+A DJ battle game where you mix music live and go head-to-head against a bot or a friend. I'm experimenting with two ways to play: "dropping tones" onto little characters that each carry a part of the song, or a DJ mixer like the ones real DJs use to mix tracks and battle each other. Every sound is built to fit together, so anyone can jump in and sound good. *Early development.*
 
