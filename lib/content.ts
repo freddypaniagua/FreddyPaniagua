@@ -101,6 +101,24 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "ticket-triage",
+    name: "Ticket Triage Assistant",
+    summary:
+      "An AI tool for IT help desks. It reads a support ticket, classifies its category and priority, finds the most relevant help articles, and drafts a short reply that cites the article it used. When no article fits, it escalates to a person instead of guessing, and it never sends anything itself: a human approves, edits, or rejects every suggestion.",
+    body: "Search combines BM25 keyword matching with local embeddings, merged by Reciprocal Rank Fusion. A small Gemini model classifies the ticket and a stronger one drafts the reply or escalates, and a citation check turns any reply that cites an article the model wasn't shown into an escalation. A Streamlit review page logs every approve, edit, and reject decision. I measured it on 145 labeled synthetic tickets, with a held-out test split never used for tuning: 88% category accuracy, 100% of tickets with no matching article escalated, and no made-up citations. Rewriting a single prompt rule raised the correct-article rate from 58% to 85%. All tickets and articles are synthetic, so real tickets would likely score lower.",
+    bullets: [
+      "Built a Python tool that classifies IT help desk tickets, retrieves relevant knowledge base articles with hybrid BM25 and embedding search, and drafts cited replies with the Gemini API, escalating to a human when no article fits.",
+      "Evaluated on 145 labeled synthetic tickets with a held-out test split: 88% category accuracy, 18 of 18 unanswerable tickets escalated, and 0 of 50 replies citing an article the model wasn't shown.",
+      "Diagnosed 25 wrong escalations by cause and rewrote one prompt rule, raising the correct-article rate from 58% to 85%; added a Streamlit review page where a person approves, edits, or rejects every reply.",
+    ],
+    stack: ["Python", "Gemini API", "BM25", "Embeddings", "Streamlit", "Pydantic", "pytest"],
+    status: "Working prototype, evaluated on synthetic data.",
+    link: {
+      href: "https://github.com/freddypaniagua/ticket-triage",
+      label: "GitHub",
+    },
+  },
+  {
     slug: "tipping-point",
     name: "Tipping Point",
     summary:

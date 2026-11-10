@@ -12,8 +12,9 @@ export default function ProjectsPage() {
       <header className="max-w-2xl">
         <h1 className="font-serif text-4xl sm:text-5xl">Projects</h1>
         <p className="mt-4 leading-7 text-muted">
-          What I&apos;m building right now: a daily estimation game, a
-          real-time advisor for Counter-Strike 2, and a DJ battle game.
+          What I&apos;ve built and am building: an AI ticket triage assistant for
+          IT help desks, a daily estimation game, a real-time advisor for
+          Counter-Strike 2, and a DJ battle game.
         </p>
       </header>
       <div className="mt-10">
