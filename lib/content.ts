@@ -139,15 +139,19 @@ export const projects: Project[] = [
     slug: "cscan",
     name: "CSCAN",
     summary:
-      "A real-time economy advisor for Counter-Strike 2. It captures the screen with Qt, uses Tesseract OCR to read your money, side, and score off the game's display, and runs that through a C++ decision engine that recommends what to buy each round: full buy, force buy, eco, or save. It works only from what's on screen and never reads or changes the game's memory.",
-    body: "Side comes from the shape of the CT/T emblem, so a recolored HUD still works, and spectator detection keeps the reading off a teammate's money after you die. Without Tesseract installed, the app falls back to a mock OCR mode so the rest of the pipeline can be tested.",
+      "A real-time buy advisor for Counter-Strike 2. The game sends its exact state (your money, side, score, and round phase) to the app through Game State Integration, an official Valve feature, and a C++ decision engine recommends what to buy each round: full buy, force buy, eco, or save, with a shopping list that never costs more than you have. An optional overlay shows the advice on top of the game during the buy phase. It never reads or changes the game's memory.",
+    body: "The first version read the screen with OCR, which broke whenever the resolution or the HUD changed, so I rebuilt it around Game State Integration: a small local HTTP listener receives the game's JSON, and nothing depends on pixels. The overlay is a separate click-through window with a show/hide hotkey and a MOVE button for dragging it anywhere on screen. Over 130 offline tests cover it, including a sweep of 269,640 game situations that checks no shopping list costs more than the player's money. GitHub Actions builds and tests every change on Linux and Windows, and publishes the Windows download when I tag a version.",
     bullets: [
-      "Built a C++ and Qt 6 desktop app that captures the screen, reads money, score, and the buy timer with Tesseract, and recommends a full buy, force, eco, or save.",
-      "Side comes from the shape of the CT/T emblem, so a recolored HUD still works, and spectator detection keeps the reading off a teammate's money after you die.",
-      "The app reads pixels on screen and leaves game memory alone.",
+      "Built a C++ and Qt 6 desktop app that receives exact Counter-Strike 2 game state through Valve's Game State Integration and recommends a full buy, force, eco, or save each round.",
+      "Replaced the original screen-capture and OCR pipeline, which broke across resolutions, and added an in-game overlay as a separate click-through window that never reads or changes game memory.",
+      "Tested with over 130 Qt Test cases, including a sweep of 269,640 game situations checking that no recommendation costs more than the player's money; GitHub Actions builds, tests, and publishes Windows releases.",
     ],
-    stack: ["C++17", "Qt 6", "Tesseract", "CMake"],
-    status: "In progress: making screen reading work reliably at every resolution.",
+    stack: ["C++17", "Qt 6", "CMake", "GitHub Actions"],
+    status: "Released: a free download for Windows.",
+    link: {
+      href: "https://github.com/freddypaniagua/cscan-releases",
+      label: "Download",
+    },
   },
   {
     slug: "drop-tones",
