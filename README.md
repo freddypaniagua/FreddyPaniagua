@@ -1,6 +1,6 @@
 # Freddy Paniagua
 
-Aspiring software engineer studying computer science at UCLA.
+Student at UCLA studying computer science.
 
 🌐 [freddypaniagua.github.io/FreddyPaniagua](https://freddypaniagua.github.io/FreddyPaniagua/)
 
